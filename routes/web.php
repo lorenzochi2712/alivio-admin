@@ -25,4 +25,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/secretaria', fn() => 'Panel Secretaria')->name('secretaria.dashboard');
     Route::get('/admin/users', [App\Http\Controllers\FirebaseUserController::class, 'index'])
     ->name('admin.users.index');
+Route::get('/users', [FirebaseUserController::class, 'index'])->name('users.index');
+Route::get('/users/{uid}/edit', [FirebaseUserController::class, 'edit'])->name('users.edit');
+Route::patch('/users/{uid}', [FirebaseUserController::class, 'update'])->name('users.update');
+Route::delete('/users/{uid}', [FirebaseUserController::class, 'destroy'])->name('users.destroy');
 });
